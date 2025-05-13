@@ -9,11 +9,11 @@ import lombok.Data;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "question_title")
-    private String questionTitle;
+    private String question_title;
 
     @Column(name = "option1")
     private String option1;
