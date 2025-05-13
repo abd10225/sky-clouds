@@ -55,7 +55,10 @@ public class QuestionService  {
             Question existingQuestion = optionalQuestion.get();
 
             // Update only the fields you care about
-            existingQuestion.setQuestionTitle(updatedQuestion.getQuestionTitle());
+//            existingQuestion.setQuestionTitle(updatedQuestion.getQuestionTitle());
+            if (updatedQuestion.getQuestionTitle() == null || updatedQuestion.getQuestionTitle().isBlank()) {
+                return ResponseEntity.badRequest().body("Question title cannot be null or blank");
+            }
             existingQuestion.setOption1(updatedQuestion.getOption1());
             existingQuestion.setOption2(updatedQuestion.getOption2());
             existingQuestion.setOption3(updatedQuestion.getOption3());
