@@ -1,7 +1,7 @@
 package com.abdullah.quizapp.service;
 
-import com.abdullah.quizapp.Question;
 import com.abdullah.quizapp.dao.QuestionDao;
+import com.abdullah.quizapp.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +55,7 @@ public class QuestionService  {
             Question existingQuestion = optionalQuestion.get();
 
             // Update only the fields you care about
-            existingQuestion.setQuestion_title(updatedQuestion.getQuestion_title());
+            existingQuestion.setQuestionTitle(updatedQuestion.getQuestionTitle());
             existingQuestion.setOption1(updatedQuestion.getOption1());
             existingQuestion.setOption2(updatedQuestion.getOption2());
             existingQuestion.setOption3(updatedQuestion.getOption3());

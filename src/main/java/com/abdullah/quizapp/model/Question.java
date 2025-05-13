@@ -1,11 +1,11 @@
-package com.abdullah.quizapp;
+package com.abdullah.quizapp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "question") // match exact table name in PostgreSQL
+@Table(name = "question")
 public class Question {
 
     @Id
@@ -13,7 +13,7 @@ public class Question {
     private Integer id;
 
     @Column(name = "question_title")
-    private String question_title;
+    private String questionTitle;
 
     @Column(name = "option1")
     private String option1;

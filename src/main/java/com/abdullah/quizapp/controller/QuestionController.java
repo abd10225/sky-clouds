@@ -1,14 +1,12 @@
 package com.abdullah.quizapp.controller;
 
-import com.abdullah.quizapp.Question;
+import com.abdullah.quizapp.model.Question;
 import com.abdullah.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("question")
