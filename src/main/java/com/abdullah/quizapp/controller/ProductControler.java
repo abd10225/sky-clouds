@@ -20,8 +20,30 @@ public class ProductControler {
 
     @GetMapping("allProducts")
     public ResponseEntity<List<Products>> getAllProducts() {
-        return productService.getAllProducts();
+        List<Products> products = productService.getAllProducts();
+        return ResponseEntity.ok(products);
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Products> getProductById(@PathVariable Integer id) {
+        Products product = productService.getProductById(id);
+        return ResponseEntity.ok(product);
+    }
+
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<Products>> getProductByCategory(@PathVariable String category) {
+        List<Products> products = productService.getProductByCategory(category);
+        return ResponseEntity.ok(products);
+    }
+
+    //search products.
+    @GetMapping("")
+    public ResponseEntity<List<Products>> searchProducts(@RequestParam String search) {
+        List<Products> products = productService.getProductBySearch(search);
+        return ResponseEntity.ok(products);
+    }
+
 
 
 }
