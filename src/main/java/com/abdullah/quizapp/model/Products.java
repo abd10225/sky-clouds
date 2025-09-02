@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -23,14 +24,14 @@ public class Products {
     @Column(name = "brand")
     private String brand;
 
-    @Column(name = "amount")
-    private String amount;
+    @Column(name = "amount", precision = 10, scale = 2)
+    private BigDecimal amount;
 
     @Column(name = "stock")
-    private String stock;
+    private Integer stock;
 
     @Column(name = "reorder_level")
-    private String reorder_level;
+    private Integer reorder_level;
 
     @Column(name = "category")
     private String category;

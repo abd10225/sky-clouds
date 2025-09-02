@@ -4,6 +4,7 @@ package com.abdullah.quizapp.controller;
 import com.abdullah.quizapp.model.Products;
 import com.abdullah.quizapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,26 @@ public class ProductControler {
         List<Products> products = productService.getProductBySearch(search);
         return ResponseEntity.ok(products);
     }
+
+    @PostMapping("")
+    public  ResponseEntity<Products> createProduct(@RequestBody Products product) {
+        Products createdProduct = productService.createProduct(product);
+        return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Products> updateProduct(@PathVariable Integer id, @RequestBody Products product) {
+        Products updatedProduct = productService.updateProduct(id, product);
+        return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable Integer id) {
+        productService.deleteProduct(id);
+        return ResponseEntity.ok("Product deleted successfully");
+    }
+
+
 
 
 

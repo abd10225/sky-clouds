@@ -44,4 +44,31 @@ public class ProductService {
         }
         return products;
     }
+
+    public Products createProduct(Products product) {
+        return productDao.save(product);
+    }
+
+    public Products updateProduct(Integer id, Products updatedProduct) {
+        Products existing = productDao.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + id));
+
+        if (updatedProduct.getName() != null) existing.setName(updatedProduct.getName());
+        if (updatedProduct.getAmount() != null) existing.setAmount(updatedProduct.getAmount());
+        if (updatedProduct.getStock() != null) existing.setStock(updatedProduct.getStock());
+        if (updatedProduct.getCategory() != null) existing.setCategory(updatedProduct.getCategory());
+        if (updatedProduct.getBrand() != null) existing.setBrand(updatedProduct.getBrand());
+        if (updatedProduct.getReorder_level() != null) existing.setReorder_level(updatedProduct.getReorder_level());
+
+        return productDao.save(existing);
+    }
+
+    public void deleteProduct(Integer id) {
+        if (!productDao.existsById(id)) {
+            throw new ResourceNotFoundException("Product not found with id " + id);
+        }
+        productDao.deleteById(id);
+    }
+
+
 }
